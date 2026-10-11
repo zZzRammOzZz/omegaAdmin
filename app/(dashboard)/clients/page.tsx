@@ -32,7 +32,7 @@ export default async function ClientsPage({
               name="q"
               defaultValue={q ?? ""}
               placeholder="Search name or company ID"
-              className="w-72 rounded-full border border-border bg-white px-4 py-2.5 text-sm outline-none focus:border-gold focus:ring-4 focus:ring-gold/15"
+              className="w-full rounded-full border border-border bg-white px-4 py-2.5 text-sm outline-none focus:border-gold focus:ring-4 focus:ring-gold/15 sm:w-72"
             />
           </form>
         }

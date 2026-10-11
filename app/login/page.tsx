@@ -36,7 +36,7 @@ export default async function LoginPage({
         <p className="relative text-xs text-[#7d766c]">Internal dashboard · not for technicians</p>
       </section>
 
-      <section className="flex items-center justify-center bg-[#f3eee4] px-6 py-16">
+      <section className="flex items-center justify-center bg-[#f3eee4] px-5 py-12 pt-[max(3rem,env(safe-area-inset-top))] sm:px-6 sm:py-16">
         <div className="w-full max-w-sm">
           <div className="mb-8 lg:hidden">
             <Image src="/logo.png" alt="" width={56} height={56} className="mb-4 rounded-2xl" />

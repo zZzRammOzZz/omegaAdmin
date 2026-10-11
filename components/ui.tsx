@@ -18,10 +18,10 @@ export function PageHeader({
         {eyebrow ? (
           <p className="mb-2 text-[11px] font-semibold tracking-[0.22em] text-gold uppercase">{eyebrow}</p>
         ) : null}
-        <h1 className="text-4xl text-ink">{title}</h1>
+        <h1 className="text-3xl text-ink sm:text-4xl">{title}</h1>
         {description ? <p className="mt-2 max-w-xl text-sm leading-6 text-muted">{description}</p> : null}
       </div>
-      {actions ? <div className="flex flex-wrap items-center gap-2">{actions}</div> : null}
+      {actions ? <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">{actions}</div> : null}
     </div>
   );
 }
@@ -48,7 +48,7 @@ export function Badge({
 }
 
 export function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <div className={`panel p-6 ${className}`}>{children}</div>;
+  return <div className={`panel p-4 sm:p-6 ${className}`}>{children}</div>;
 }
 
 export function Stat({
@@ -72,7 +72,7 @@ export function Stat({
   return (
     <div className="panel p-5">
       <p className="text-[11px] font-semibold tracking-[0.16em] text-muted uppercase">{label}</p>
-      <p className={`serif mt-3 text-4xl ${color}`}>{value}</p>
+      <p className={`serif mt-2 text-3xl sm:mt-3 sm:text-4xl ${color}`}>{value}</p>
       {hint ? <p className="mt-2 text-xs text-muted">{hint}</p> : null}
     </div>
   );
@@ -140,7 +140,7 @@ export function Button({
     success: "bg-success text-white hover:opacity-90",
     ghost: "bg-transparent text-muted hover:text-ink",
   }[variant];
-  const shared = `inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition ${cls}`;
+  const shared = `inline-flex min-h-10 items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition ${cls}`;
   if (href) {
     return (
       <Link href={href} className={shared}>
@@ -166,12 +166,12 @@ export function Empty({ title, children }: { title?: string; children: ReactNode
 
 export function Tabs({ items, active }: { items: { href: string; label: string }[]; active: string }) {
   return (
-    <div className="inline-flex rounded-full border border-border bg-white p-1">
+    <div className="inline-flex max-w-full overflow-x-auto rounded-full border border-border bg-white p-1">
       {items.map((item) => (
         <Link
           key={item.href}
           href={item.href}
-          className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition ${
+          className={`shrink-0 rounded-full px-3.5 py-1.5 text-sm font-medium transition ${
             active === item.href ? "bg-dark text-gold" : "text-muted hover:text-ink"
           }`}
         >
@@ -198,8 +198,8 @@ export function DataTable({
   children: ReactNode;
 }) {
   return (
-    <div className="panel overflow-hidden p-0">
-      <table className="w-full text-left text-sm">
+    <div className="panel overflow-x-auto p-0">
+      <table className="w-full min-w-[640px] text-left text-sm">
         <thead>
           <tr className="border-b border-border bg-[#faf6ef]">
             {headers.map((h) => (
