@@ -45,7 +45,7 @@ export default async function OverviewPage() {
       supabase.from("pending_items").select("*"),
       supabase.from("edit_requests").select("*", { count: "exact", head: true }).eq("status", "pending"),
       supabase.from("clients").select("*", { count: "exact", head: true }),
-      supabase.from("profiles").select("id, full_name, status, role"),
+      supabase.from("profiles").select("*"),
     ]);
 
   const rows = visits ?? [];

@@ -11,7 +11,12 @@ export async function signIn(_prev: { error?: string } | null, formData: FormDat
   const password = String(formData.get("password") ?? "");
   if (!email || !password) return { error: "Email and password are required." };
 
-  const supabase = await createClient();
+  let supabase;
+  try {
+    supabase = await createClient();
+  } catch (err) {
+    return { error: err instanceof Error ? err.message : "Server is missing Supabase env keys." };
+  }
   const { error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) return { error: error.message };
 
@@ -19,7 +24,7 @@ export async function signIn(_prev: { error?: string } | null, formData: FormDat
   const userId = data?.claims?.sub;
   if (!userId) return { error: "Could not verify session." };
 
-  const { data: profile } = await supabase.from("profiles").select("role, status").eq("id", userId).single();
+  const { data: profile } = await supabase.from("profiles").select("*").eq("id", userId).single();
   if (profile?.status === "suspended") {
     await supabase.auth.signOut();
     return { error: "This account is suspended. Ask another admin to restore it." };

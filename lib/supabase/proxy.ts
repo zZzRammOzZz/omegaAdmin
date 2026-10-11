@@ -4,7 +4,18 @@ import { supabaseEnv } from "@/lib/env";
 
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
-  const { url, key } = supabaseEnv();
+  let url: string;
+  let key: string;
+  try {
+    ({ url, key } = supabaseEnv());
+  } catch {
+    if (request.nextUrl.pathname === "/login") {
+      return NextResponse.next({ request });
+    }
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = "/login";
+    return NextResponse.redirect(redirectUrl);
+  }
 
   const supabase = createServerClient(url, key, {
     cookies: {
