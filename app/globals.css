@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f3eee4;
+  --foreground: #1c1914;
+  --gold: #c9a05a;
+  --gold-soft: #f3e4c4;
+  --dark: #161410;
+  --ink: #1c1914;
+  --muted: #7a7266;
+  --border: #e4d8c4;
+  --card: #fffdf8;
+  --danger: #b42318;
+  --success: #2f6b45;
+  --warning: #9a6b1f;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-dark: var(--dark);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --font-sans: var(--font-poppins);
+  --font-serif: var(--font-poppins);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-poppins), "Poppins", Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+.serif {
+  font-family: var(--font-poppins), "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.canvas {
+  background:
+    radial-gradient(1200px 500px at 100% -10%, rgba(201, 160, 90, 0.12), transparent 50%),
+    var(--background);
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 18px 40px -28px rgba(28, 25, 20, 0.35);
+}
+
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d8c7a4, transparent);
+}
